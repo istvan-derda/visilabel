@@ -17,8 +17,8 @@
     let windowHeight = 0
     let windowWidth = 0
     let listMinHeight
-    $: listMinHeight = getPreviewImageSizePx(windowHeight, windowWidth) + 20;
     $: previewImageSizePx = getPreviewImageSizePx(windowHeight, windowWidth)
+    $: listMinHeight = previewImageSizePx + 20;
     $: detailImageSizePx = getModalImageSizePx(windowHeight, windowWidth)
 
     function handleDndConsider(e) {
