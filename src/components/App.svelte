@@ -33,7 +33,9 @@
         <DragNDropList images={notSureOrMedium} color={"#f5edb3"}/>
         <DragNDropList images={notVisible} color={"#f2ac9d"}/>
     </div>
-    <button on:click={onClickSubmit}>submit</button>
+    <div class=controls>
+        <button class=button on:click={onClickSubmit}>next</button>
+    </div>
 </Modal>
 
 <style>
@@ -47,4 +49,32 @@
         display: grid;
         grid-template-rows: auto auto auto;
     }
+
+    .controls {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .button {
+        all: unset;
+        margin: 8px;
+        cursor: pointer;
+        display: inline-block;
+        padding: 0.75rem 1.25rem;
+        border-radius: 10rem;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        background-color: #47f561;
+        letter-spacing: 0.15rem;
+    }
+    .button:hover {
+        color: #fff;
+    }
+    .button:active {
+        background-color: #47f561;
+        margin-top: 10px;
+    }
+
+
 </style>
