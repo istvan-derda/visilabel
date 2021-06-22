@@ -13,7 +13,6 @@
     let notVisible = []
 
     function onClickSubmit() {
-        console.log("submit")
         let checks = convertToChecks(userId, {visibleItems: visible, mediumItems: notSureOrMedium, notVisibleItems: notVisible})
         saveChecks(checks)
         visible = []
