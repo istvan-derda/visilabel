@@ -19,8 +19,8 @@
 	</span>
 
     <div class=drag-n-drop-lists-container>
-        <DragNDropList {images} color={"#dcf5de"}/>
-        <DragNDropList color={"#f5edb3"}/>
+        <DragNDropList color={"#dcf5de"}/>
+        <DragNDropList {images} color={"#f5edb3"}/>
         <DragNDropList color={"#f2ac9d"}/>
     </div>
 </Modal>
