@@ -3,7 +3,7 @@
     import ImageContainer from './ImageContainer.svelte';
     import {dndzone} from 'svelte-dnd-action';
     import {getContext} from 'svelte'
-    import {getModalImageSizePx, getPreviewImageSizePx} from "../services/sizingService";
+    import {getModalImageSizePx, getPreviewImageSizePx} from "../services/sizingLogic";
 
     const {open} = getContext('simple-modal');
 
@@ -16,7 +16,6 @@
 
     let windowHeight = 0
     let windowWidth = 0
-    let listMinHeight
     $: previewImageSizePx = getPreviewImageSizePx(windowHeight, windowWidth)
     $: listMinHeight = previewImageSizePx + 20;
     $: detailImageSizePx = getModalImageSizePx(windowHeight, windowWidth)

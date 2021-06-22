@@ -1,16 +1,26 @@
 <script>
     import DragNDropList from './DragNDropList.svelte';
     import Modal from 'svelte-simple-modal';
+    import {userIdFromCookie} from "../services/userIdService";
+    import {getNextToCheck, saveChecks} from "../services/backendService";
+    import {convertToChecks} from '../services/checkMapper'
 
-    let images = [
-        {id: 1, designId: 122644386, background: "#000000"},
-        {id: 2, designId: 122644386, background: "#ffffff"},
-        {id: 4, designId: 122644386, background: "#aaa"},
-        {id: 5, designId: 122644386, background: "#abc"},
-        {id: 6, designId: 126295421, background: "#000000"},
-        {id: 7, designId: 126295421, background: "#ffffff"},
-        {id: 8, designId: 126295421, background: "#aaa"},
-        {id: 9, designId: 126295421, background: "#abc"}]
+
+    const userId = userIdFromCookie()
+
+    let visible = []
+    let notSureOrMedium = getNextToCheck(userId)
+    let notVisible = []
+
+    function onClickSubmit() {
+        console.log("submit")
+        let checks = convertToChecks(userId, {visibleItems: visible, mediumItems: notSureOrMedium, notVisibleItems: notVisible})
+        saveChecks(checks)
+        visible = []
+        notSureOrMedium = getNextToCheck(userId)
+        notVisible = []
+    }
+
 </script>
 
 <Modal>
@@ -19,10 +29,11 @@
 	</span>
 
     <div class=drag-n-drop-lists-container>
-        <DragNDropList color={"#dcf5de"}/>
-        <DragNDropList {images} color={"#f5edb3"}/>
-        <DragNDropList color={"#f2ac9d"}/>
+        <DragNDropList images={visible} color={"#dcf5de"}/>
+        <DragNDropList images={notSureOrMedium} color={"#f5edb3"}/>
+        <DragNDropList images={notVisible} color={"#f2ac9d"}/>
     </div>
+    <button on:click={onClickSubmit}>submit</button>
 </Modal>
 
 <style>
