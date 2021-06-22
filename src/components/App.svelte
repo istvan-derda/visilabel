@@ -28,9 +28,9 @@
 	</span>
 
     <div class=drag-n-drop-lists-container>
-        <DragNDropList images={visible} color={"#dcf5de"}/>
-        <DragNDropList images={notSureOrMedium} color={"#f5edb3"}/>
-        <DragNDropList images={notVisible} color={"#f2ac9d"}/>
+        <DragNDropList description="Visible" images={visible} color={"#dcf5de"}/>
+        <DragNDropList description="Not Sure / Medium" images={notSureOrMedium} color={"#f5edb3"}/>
+        <DragNDropList description="(Partially) Not Visible" images={notVisible} color={"#f2ac9d"}/>
     </div>
     <div class=controls>
         <button class=button on:click={onClickSubmit}>next</button>
@@ -56,14 +56,15 @@
 
     .button {
         all: unset;
-        margin: 8px;
+        margin-right: 8px;
+        margin-top: 4px;
         cursor: pointer;
         display: inline-block;
         padding: 0.75rem 1.25rem;
         border-radius: 10rem;
         color: #fff;
         text-transform: uppercase;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         background-color: #47f561;
         letter-spacing: 0.15rem;
     }
@@ -72,7 +73,7 @@
     }
     .button:active {
         background-color: #47f561;
-        margin-top: 10px;
+        margin-top: 6px;
     }
 
 

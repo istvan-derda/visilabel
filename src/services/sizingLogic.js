@@ -10,11 +10,11 @@ export function getPreviewImageSizePx(windowHeight, windowWidth) {
     return getPossibleImageSize(
             Math.max(
                     Math.min(
-                            (windowHeight-250) / 6,
+                            (windowHeight-320) / 6,
                             windowWidth
                     ),
                     Math.min(
-                            (windowHeight-250) / 3,
+                            (windowHeight-320) / 3,
                             (windowWidth-200) / 8
                     ))
     )
