@@ -19,12 +19,4 @@
         display: grid;
         place-items: center;
     }
-
-    img {
-        /* necessary because imageserver cannot handle height and width constraint together */
-        object-fit: contain;
-        height: 100%;
-        width: 100%;
-        /* --- */
-    }
 </style>
