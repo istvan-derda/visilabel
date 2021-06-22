@@ -58,6 +58,7 @@
         all: unset;
         margin-right: 8px;
         margin-top: 4px;
+        margin-bottom: 8px;
         cursor: pointer;
         display: inline-block;
         padding: 0.75rem 1.25rem;
