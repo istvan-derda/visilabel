@@ -34,6 +34,12 @@
         to_check = []
     }
 
+    function reset() {
+        to_check = to_check.concat(visible.concat(notVisible))
+        visible = []
+        notVisible = []
+    }
+
     function sendDown() {
         if (to_check.length <= 0) {
             return
@@ -60,6 +66,7 @@
         <DragNDropList description="To Check" bind:configurations={to_check} color={"#ccc"}>
             <div class="send-up-down">
                 <button class="send up" on:click={sendUp}>send up</button>
+                <button class="send" on:click={reset}>reset</button>
                 <button class="send down" on:click={sendDown}>send down</button>
             </div>
         </DragNDropList>
@@ -130,7 +137,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 100px;
+        height: 150px;
     }
 
     .send {
