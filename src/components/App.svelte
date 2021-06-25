@@ -14,6 +14,8 @@
     let notVisible = []
 
     function onClickSubmit() {
+        console.log("visible_list:")
+        console.log(visible)
         if (to_check.length > 0) {
             return
         }

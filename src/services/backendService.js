@@ -6,16 +6,34 @@ let i = 0;
 export async function fetchAllBatches() {
     let batches_dto = await fetch("https://visilable-backend.herokuapp.com/toRate").then(response => response.json())
     all_batches = batches_dto.batches
+    console.log(all_batches)
 }
 
 export function saveChecks(checks) {
-    for (let check in checks) {
+    console.log("saveChecks")
+    console.log(checks)
+    for (let check of checks) {
         saveCheck(check)
     }
 }
 
-function saveCheck({id, userId, designId, colorHexString, visibilityRating}) {
-    //todo
+function saveCheck({userId, designId, backgroundColor, visibilityScore}) {
+    console.log("saveCheck:")
+    console.log(userId, designId, backgroundColor, visibilityScore)
+    fetch("https://visilable-backend.herokuapp.com/submitRating", {
+        method: "POST",
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "ratings": [
+                {
+                    "user_id": userId, "design_id": designId, "background_color": backgroundColor.replace("#", ""), "rating": visibilityScore
+                }
+            ]
+        })
+    })
 }
 
 export function getNextToCheck() {
