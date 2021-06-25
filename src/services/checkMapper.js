@@ -6,8 +6,5 @@ export function convertToChecks(userId, {visibleItems, notVisibleItems}) {
 }
 
 function convertToCheck(userId, {id, designId, background}, visibilityScore) {
-    let check = {id: id, designId: designId, backgroundColor: background, userId: userId, visibilityScore: visibilityScore}
-    console.log("convert to check")
-    console.log(check)
-    return check
+    return {id: id, designId: designId, backgroundColor: background, userId: userId, visibilityScore: visibilityScore}
 }
