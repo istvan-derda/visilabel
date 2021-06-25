@@ -14,6 +14,9 @@
     let notVisible = []
 
     function onClickSubmit() {
+        if (to_check.length>0){
+            return
+        }
         let checks = convertToChecks(userId, {visibleItems: visible, notVisibleItems: notVisible})
         saveChecks(checks)
         visible = []
@@ -32,12 +35,12 @@
 	</span>
 
     <div class=drag-n-drop-lists-container>
-        <DragNDropList description="Visible" configurations={visible} color={"#dcf5de"}/>
-        <DragNDropList description="To Check" configurations={to_check} color={"#ccc"}/>
-        <DragNDropList description="(Partially) Not Visible" configurations={notVisible} color={"#f2ac9d"}/>
+        <DragNDropList description="Visible" bind:configurations={visible} color={"#dcf5de"}/>
+        <DragNDropList description="To Check" bind:configurations={to_check} color={"#ccc"}/>
+        <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}/>
     </div>
     <div class=controls>
-        <button class=button on:click={onClickSubmit}>next</button>
+        <button class=button class:enabled={to_check.length===0} on:click={onClickSubmit}>next</button>
     </div>
 </Modal>
 
@@ -70,15 +73,19 @@
         color: #fff;
         text-transform: uppercase;
         font-size: 1.3rem;
-        background-color: #47f561;
+        background-color: lightgray;
         letter-spacing: 0.15rem;
     }
 
-    .button:hover {
+    .button.enabled {
+        background-color: #47f561;
+    }
+
+    .button.enabled:hover {
         color: #fff;
     }
 
-    .button:active {
+    .button.enabled:active {
         background-color: #47f561;
         margin-top: 6px;
     }
