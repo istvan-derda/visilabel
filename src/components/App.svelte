@@ -24,6 +24,22 @@
         notVisible = []
     }
 
+    function sendUp() {
+        if (to_check.length <= 0) {
+            return
+        }
+        visible = to_check
+        to_check = []
+    }
+
+    function sendDown() {
+        if (to_check.length <= 0) {
+            return
+        }
+        notVisible = to_check
+        to_check = []
+    }
+
     onMount(() => fetchAllBatches()
             .then(() => to_check = getNextToCheck()))
 
@@ -39,11 +55,16 @@
 
     <div class=drag-n-drop-lists-container>
         <DragNDropList description="Visible" bind:configurations={visible} color={"#dcf5de"}/>
-        <DragNDropList description="To Check" bind:configurations={to_check} color={"#ccc"}/>
+        <DragNDropList description="To Check" bind:configurations={to_check} color={"#ccc"}>
+            <div class="send-up-down">
+                <button class="send up" on:click={sendUp}>send up</button>
+                <button class="send down" on:click={sendDown}>send down</button>
+            </div>
+        </DragNDropList>
         <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}/>
     </div>
     <div class=controls>
-        <button class=button class:enabled={to_check.length===0} on:click={onClickSubmit}>next</button>
+        <button class=submit class:enabled={to_check.length===0} on:click={onClickSubmit}>next</button>
     </div>
 </Modal>
 
@@ -69,7 +90,7 @@
         justify-content: flex-end;
     }
 
-    .button {
+    .submit {
         all: unset;
         margin-right: 8px;
         margin-top: 4px;
@@ -85,18 +106,40 @@
         letter-spacing: 0.15rem;
     }
 
-    .button.enabled {
+    .submit.enabled {
         background-color: #47f561;
     }
 
-    .button.enabled:hover {
+    .submit.enabled:hover {
         color: #fff;
     }
 
-    .button.enabled:active {
+    .submit.enabled:active {
         background-color: #47f561;
         margin-top: 6px;
     }
 
 
+    .send-up-down {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100px;
+    }
+
+    .send {
+        margin: 0;
+    }
+
+    .up {
+        background: #dcf5de;
+    }
+
+    .down {
+        background: #f2ac9d;
+    }
 </style>

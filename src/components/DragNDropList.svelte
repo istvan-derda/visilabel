@@ -39,6 +39,7 @@
 <div class="drag-n-drop-list-container"
      style="background:{color}">
     <div class=description>{description}</div>
+    <slot class="optional-controls"/>
     <section class="drag-n-drop-list"
              style="min-height:{listMinHeight}px"
              use:dndzone={{items: configurations}}
