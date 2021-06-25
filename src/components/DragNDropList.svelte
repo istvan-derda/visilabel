@@ -29,8 +29,8 @@
         configurations = e.detail.items
     }
 
-    function handleImageClick(image) {
-        open(ImageContainer, {image: image, imageSizePx: detailImageSizePx})
+    function handleImageClick(configuration) {
+        open(ImageContainer, {configuration: configuration, imageSizePx: detailImageSizePx})
     }
 </script>
 
