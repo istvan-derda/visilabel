@@ -18,5 +18,6 @@
 
         display: grid;
         place-items: center;
+        padding: 4px;
     }
 </style>

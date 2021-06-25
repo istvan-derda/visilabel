@@ -2,23 +2,27 @@
     import DragNDropList from './DragNDropList.svelte';
     import Modal from 'svelte-simple-modal';
     import {userIdFromCookie} from "../services/userIdService";
-    import {getNextToCheck, saveChecks} from "../services/backendService";
+    import {fetchAllBatches, getNextToCheck, saveChecks} from "../services/backendService";
     import {convertToChecks} from '../services/checkMapper'
+    import {onMount} from "svelte";
 
 
     const userId = userIdFromCookie()
 
     let visible = []
-    let notSureOrMedium = getNextToCheck(userId)
+    let to_check = []
     let notVisible = []
 
     function onClickSubmit() {
-        let checks = convertToChecks(userId, {visibleItems: visible, mediumItems: notSureOrMedium, notVisibleItems: notVisible})
+        let checks = convertToChecks(userId, {visibleItems: visible, notVisibleItems: notVisible})
         saveChecks(checks)
         visible = []
-        notSureOrMedium = getNextToCheck(userId)
+        to_check = getNextToCheck()
         notVisible = []
     }
+
+    onMount(() => fetchAllBatches()
+            .then(() => to_check = getNextToCheck()))
 
 </script>
 
@@ -29,7 +33,7 @@
 
     <div class=drag-n-drop-lists-container>
         <DragNDropList description="Visible" images={visible} color={"#dcf5de"}/>
-        <DragNDropList description="Not Sure / Medium" images={notSureOrMedium} color={"#f5edb3"}/>
+        <DragNDropList description="To Check" images={to_check} color={"#ccc"}/>
         <DragNDropList description="(Partially) Not Visible" images={notVisible} color={"#f2ac9d"}/>
     </div>
     <div class=controls>
@@ -69,9 +73,11 @@
         background-color: #47f561;
         letter-spacing: 0.15rem;
     }
+
     .button:hover {
         color: #fff;
     }
+
     .button:active {
         background-color: #47f561;
         margin-top: 6px;

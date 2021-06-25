@@ -1,5 +1,14 @@
 import uuid from "uuid-random";
 
+let all_batches
+let i = 0;
+
+export async function fetchAllBatches() {
+    let batches_dto = await fetch("https://visilable-backend.herokuapp.com/toRate").then(response => response.json())
+    all_batches = batches_dto.batches
+    console.log(all_batches)
+}
+
 export function saveChecks(checks) {
     for (let check in checks) {
         saveCheck(check)
@@ -10,14 +19,8 @@ function saveCheck({id, userId, designId, colorHexString, visibilityRating}) {
     //todo
 }
 
-export function getNextToCheck(userId) {
-    return [
-        {id: uuid(), designId: 122644386, background: "#000000"},
-        {id: uuid(), designId: 122644386, background: "#ffffff"},
-        {id: uuid(), designId: 122644386, background: "#aaa"},
-        {id: uuid(), designId: 122644386, background: "#abc"},
-        {id: uuid(), designId: 126295421, background: "#000000"},
-        {id: uuid(), designId: 126295421, background: "#ffffff"},
-        {id: uuid(), designId: 126295421, background: "#aaa"},
-        {id: uuid(), designId: 126295421, background: "#abc"}]
+export function getNextToCheck() {
+    let nextToCheck = all_batches[i]
+    i++;
+    return nextToCheck.background_colors.map(color=>({id: uuid(), designId: nextToCheck.design_id, background: color}))
 }

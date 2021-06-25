@@ -77,7 +77,7 @@
 
     .description {
         position: absolute;
-        top:4px;
+        top: 4px;
         left: 4px;
         font-weight: bold;
     }
