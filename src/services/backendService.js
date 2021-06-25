@@ -5,7 +5,7 @@ let i = 0;
 
 export async function fetchAllBatches() {
     let batches_dto = await fetch("https://visilable-backend.herokuapp.com/toRate").then(response => response.json())
-    all_batches = batches_dto.batchesK
+    all_batches = batches_dto.batches
 }
 
 export function saveChecks(checks) {
