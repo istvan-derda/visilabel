@@ -28,7 +28,7 @@
         if (to_check.length <= 0) {
             return
         }
-        visible = to_check
+        visible = visible.concat(to_check)
         to_check = []
     }
 
@@ -36,7 +36,7 @@
         if (to_check.length <= 0) {
             return
         }
-        notVisible = to_check
+        notVisible = notVisible.concat(to_check)
         to_check = []
     }
 
