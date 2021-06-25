@@ -32,9 +32,9 @@
 	</span>
 
     <div class=drag-n-drop-lists-container>
-        <DragNDropList description="Visible" images={visible} color={"#dcf5de"}/>
-        <DragNDropList description="To Check" images={to_check} color={"#ccc"}/>
-        <DragNDropList description="(Partially) Not Visible" images={notVisible} color={"#f2ac9d"}/>
+        <DragNDropList description="Visible" configurations={visible} color={"#dcf5de"}/>
+        <DragNDropList description="To Check" configurations={to_check} color={"#ccc"}/>
+        <DragNDropList description="(Partially) Not Visible" configurations={notVisible} color={"#f2ac9d"}/>
     </div>
     <div class=controls>
         <button class=button on:click={onClickSubmit}>next</button>

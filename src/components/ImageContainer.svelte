@@ -1,14 +1,14 @@
 <script>
     import {designImageUrl} from '../services/imageService.js'
 
-    export let image;
+    export let configuration;
     export let imageSizePx
 </script>
 
-<div class=image-container style="height:{imageSizePx}px;width:{imageSizePx}px;background:{image.background};">
+<div class=image-container style="height:{imageSizePx}px;width:{imageSizePx}px;background:{configuration.background};">
     <!--suppress HtmlUnknownTarget -->
     <img alt="design"
-         src={designImageUrl(image.designId, imageSizePx)}>
+         src={designImageUrl(configuration.designId, imageSizePx)}>
 </div>
 
 <style>

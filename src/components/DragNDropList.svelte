@@ -9,7 +9,7 @@
 
     export let description = ""
     export let color = "#fff"
-    export let images = []
+    export let configurations = []
 
     let flipDurationMs = 300;
     let previewImageSizePx = 200
@@ -22,11 +22,11 @@
     $: detailImageSizePx = getModalImageSizePx(windowHeight, windowWidth)
 
     function handleDndConsider(e) {
-        images = e.detail.items
+        configurations = e.detail.items
     }
 
     function handleDndFinalize(e) {
-        images = e.detail.items
+        configurations = e.detail.items
     }
 
     function handleImageClick(image) {
@@ -41,12 +41,12 @@
     <div class=description>{description}</div>
     <section class="drag-n-drop-list"
              style="min-height:{listMinHeight}px"
-             use:dndzone={{items: images}}
+             use:dndzone={{items: configurations}}
              on:consider={handleDndConsider}
              on:finalize={handleDndFinalize}>
-        {#each images as image (image.id)}
-            <div class=drag-n-drop-item animate:flip="{{duration: flipDurationMs}}" on:click={()=>handleImageClick(image)}>
-                <ImageContainer image={image} imageSizePx={previewImageSizePx}/>
+        {#each configurations as configuration (configuration.id)}
+            <div class=drag-n-drop-item animate:flip="{{duration: flipDurationMs}}" on:click={()=>handleImageClick(configuration)}>
+                <ImageContainer {configuration} imageSizePx={previewImageSizePx}/>
             </div>
         {/each}
     </section>
