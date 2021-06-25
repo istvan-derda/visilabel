@@ -14,7 +14,7 @@
     let notVisible = []
 
     function onClickSubmit() {
-        if (to_check.length>0){
+        if (to_check.length > 0) {
             return
         }
         let checks = convertToChecks(userId, {visibleItems: visible, notVisibleItems: notVisible})
@@ -30,9 +30,12 @@
 </script>
 
 <Modal>
+    <div class=header>
 	<span class=title>
 		Visi<b>lable</b>
 	</span>
+        <span>your id is: {userId}</span>
+    </div>
 
     <div class=drag-n-drop-lists-container>
         <DragNDropList description="Visible" bind:configurations={visible} color={"#dcf5de"}/>
@@ -45,6 +48,11 @@
 </Modal>
 
 <style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .title {
         font-size: 2rem;
         font-family: sans-serif;
