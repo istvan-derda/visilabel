@@ -12,47 +12,47 @@
     const userId = userIdFromCookie()
 
     let visible = []
-    let to_check = []
+    let toCheck = []
     let notVisible = []
 
     function onClickSubmit() {
-        if (to_check.length > 0) {
+        if (toCheck.length > 0) {
             return
         }
         let checks = convertToChecks(userId, {visibleItems: visible, notVisibleItems: notVisible})
         saveChecks(checks)
         visible = []
-        to_check = getNextToCheck()
+        toCheck = getNextToCheck()
         notVisible = []
     }
 
     function sendUp() {
-        if (to_check.length <= 0) {
+        if (toCheck.length <= 0) {
             return
         }
-        visible = visible.concat(to_check)
-        to_check = []
+        visible = visible.concat(toCheck)
+        toCheck = []
     }
 
     function reset() {
-        to_check = to_check.concat(visible.concat(notVisible))
+        toCheck = toCheck.concat(visible.concat(notVisible))
         visible = []
         notVisible = []
     }
 
     function sendDown() {
-        if (to_check.length <= 0) {
+        if (toCheck.length <= 0) {
             return
         }
-        notVisible = notVisible.concat(to_check)
-        to_check = []
+        notVisible = notVisible.concat(toCheck)
+        toCheck = []
     }
 
     let promisedBatch
     onMount(() => {
         open(InfoModal, {})
         promisedBatch = fetchAllBatches()
-                .then(() => to_check = getNextToCheck())
+                .then(() => toCheck = getNextToCheck())
     })
 
 </script>
@@ -66,7 +66,7 @@
 
 <div class=drag-n-drop-lists-container>
     <DragNDropList description="Visible" bind:configurations={visible} color={"#dcf5de"}/>
-    <DragNDropList description="To Check" bind:configurations={to_check} color={"#ccc"}>
+    <DragNDropList description="To Check" bind:configurations={toCheck} color={"#ccc"}>
         <div class="send-up-down">
             <button class="send up" on:click={sendUp}>send up</button>
             <button class="send" on:click={reset}>reset</button>
@@ -81,7 +81,7 @@
     <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}/>
 </div>
 <div class=controls>
-    <button class=submit class:enabled={to_check.length===0} on:click={onClickSubmit}>next</button>
+    <button class=submit class:enabled={toCheck.length===0} on:click={onClickSubmit}>next</button>
 </div>
 
 <style>
