@@ -2,8 +2,8 @@
     import DragNDropList from './DragNDropList.svelte';
     import InfoModal from './InfoModal.svelte'
     import {userIdFromCookie} from "../services/userIdService";
-    import {fetchAllBatches, getNextToCheck, saveChecks} from "../services/backendService";
-    import {convertToChecks} from '../services/checkMapper'
+    import {fetchAllBatches, getNextToCheck, saveLabeledCombinations} from "../services/backendService";
+    import {convertToLabeledCombinations} from '../services/checkMapper'
     import {getContext, onMount} from "svelte";
     import {Pulse} from 'svelte-loading-spinners'
 
@@ -19,8 +19,8 @@
         if (toCheck.length > 0) {
             return
         }
-        let checks = convertToChecks(userId, {visibleItems: visible, notVisibleItems: notVisible})
-        saveChecks(checks)
+        let labeledCombinations = convertToLabeledCombinations(userId, {visibleItems: visible, notVisibleItems: notVisible})
+        saveLabeledCombinations(labeledCombinations)
         visible = []
         toCheck = getNextToCheck()
         notVisible = []

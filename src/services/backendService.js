@@ -8,13 +8,13 @@ export async function fetchAllBatches() {
     all_batches = batches_dto.batches
 }
 
-export function saveChecks(checks) {
-    for (let check of checks) {
-        saveCheck(check)
+export function saveLabeledCombinations(labeledCombinations) {
+    for (let labeledCombination of labeledCombinations) {
+        saveLabeledCombination(labeledCombination)
     }
 }
 
-function saveCheck({userId, designId, backgroundColor, visibilityScore}) {
+function saveLabeledCombination({userId, designId, backgroundColor, visibilityScore}) {
     fetch("https://visilable-backend.herokuapp.com/submitRating", {
         method: "POST",
         mode: 'cors',
