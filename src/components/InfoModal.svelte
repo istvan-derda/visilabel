@@ -6,13 +6,13 @@
 <h1>Welcome to Visi<b>lable</b>!</h1>
 Thank you for helping me out!
 <br/><br/>
-Please Read this introduction carefully, before starting to use this tool.
+Please read this introduction carefully, before starting to use this tool.
 <h2>What is this about?</h2>
 <p>
     I'm currently working on my bachelors-thesis in computer-science with the title "Rating the visibility of digital images with transparencies on plain backgrounds".
     <br/>
-    <i>Visi<b>lable</b></i> is a Tool I built to gather Data on what Humans perceive as "visible". <br/>
-    The Data will be used to evaluate my success in implementing an algorithm classifying designs as "Visible" or "(Partially) Not Visible".
+    <i>Visi<b>lable</b></i> is a tool I built to gather data on what humans perceive as "visible". <br/>
+    The data will be used to evaluate my success in implementing an algorithm classifying designs as "Visible" or "(Partially) Not Visible".
 </p>
 <h2>What do I mean by "(Partially) Not Visible" and "Visible"</h2>
 <p>
