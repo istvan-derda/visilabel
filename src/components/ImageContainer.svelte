@@ -5,7 +5,7 @@
     export let imageSizePx
 </script>
 
-<div class=image-container style="height:{imageSizePx}px;width:{imageSizePx}px;background:{configuration.background};">
+<div class=image-container style="height:{imageSizePx}px;width:{imageSizePx}px;background:#{configuration.background};">
     <!--suppress HtmlUnknownTarget -->
     <img alt="design"
          src={designImageUrl(configuration.designId, imageSizePx)}>

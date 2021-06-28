@@ -24,7 +24,7 @@ function saveLabeledCombination({userId, designId, backgroundColor, visibilitySc
         body: JSON.stringify({
             "ratings": [
                 {
-                    "user_id": userId, "design_id": designId, "background_color": backgroundColor.replace("#", ""), "rating": visibilityScore
+                    "user_id": userId, "design_id": designId, "background_color": backgroundColor, "rating": visibilityScore
                 }
             ]
         })

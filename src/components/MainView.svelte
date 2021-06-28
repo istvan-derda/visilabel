@@ -76,7 +76,7 @@
             Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px"  class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
-    <DragNDropList description="To Check" bind:configurations={toCheck} color={"#ccc"}>
+    <DragNDropList bind:configurations={toCheck} color={"#ccc"}>
         <div slot=description>
             To Check
         </div>
@@ -86,7 +86,7 @@
             <button class="send down" on:click={sendDown}>send down</button>
         </div>
     </DragNDropList>
-    <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}>
+    <DragNDropList bind:configurations={notVisible} color={"#f2ac9d"}>
         <div slot=description>
             (Partially) Not Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
