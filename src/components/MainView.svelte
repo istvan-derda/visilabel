@@ -1,8 +1,9 @@
 <script>
     import DragNDropList from './DragNDropList.svelte';
     import InfoModal from './InfoModal.svelte'
+    import EndModal from './EndModal.svelte'
     import {userIdFromCookie} from "../services/userIdService";
-    import {fetchAllBatches, getNextToCheck, saveLabeledCombinations} from "../services/backendService";
+    import {fetchAllBatches, getNextToCheck, hasNextToCheck, saveLabeledCombinations} from "../services/backendService";
     import {convertToLabeledCombinations} from '../services/checkMapper'
     import {getContext, onMount} from "svelte";
     import {Pulse} from 'svelte-loading-spinners'
@@ -18,6 +19,9 @@
     function onClickSubmit() {
         if (toCheck.length > 0) {
             return
+        }
+        if (!hasNextToCheck()) {
+            open(EndModal)
         }
         let labeledCombinations = convertToLabeledCombinations(userId, {visibleItems: visible, notVisibleItems: notVisible})
         saveLabeledCombinations(labeledCombinations)

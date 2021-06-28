@@ -31,8 +31,12 @@ function saveLabeledCombination({userId, designId, backgroundColor, visibilitySc
     })
 }
 
+export function hasNextToCheck() {
+    return false //all_batches.length() > i + 1
+}
+
 export function getNextToCheck() {
     let nextToCheck = all_batches[i]
     i++;
-    return nextToCheck.background_colors.map(color=>({id: uuid(), designId: nextToCheck.design_id, background: color}))
+    return nextToCheck.background_colors.map(color => ({id: uuid(), designId: nextToCheck.design_id, background: color}))
 }
