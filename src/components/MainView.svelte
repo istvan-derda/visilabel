@@ -2,6 +2,8 @@
     import DragNDropList from './DragNDropList.svelte';
     import InfoModal from './InfoModal.svelte'
     import EndModal from './EndModal.svelte'
+    import NotVisibleDefinition from './NotVisibleDefinition.svelte'
+    import VisibleDefinition from './VisibleDefinition.svelte'
     import {userIdFromCookie} from "../services/userIdService";
     import {fetchAllBatches, getNextToCheck, hasNextToCheck, saveLabeledCombinations} from "../services/backendService";
     import {convertToLabeledCombinations} from '../services/checkMapper'
@@ -63,26 +65,37 @@
 
 <div class=header>
 	<span class=title>
-		Visi<b>lable</b>
+		Visi<b>lable</b><img alt="info"  on:click={()=>open(InfoModal)} class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
 	</span>
     <span>your id is: {userId}</span>
 </div>
 
 <div class=drag-n-drop-lists-container>
-    <DragNDropList description="Visible" bind:configurations={visible} color={"#dcf5de"}/>
+    <DragNDropList bind:configurations={visible} color={"#dcf5de"}>
+        <div slot=description>
+            Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px"  class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+        </div>
+    </DragNDropList>
     <DragNDropList description="To Check" bind:configurations={toCheck} color={"#ccc"}>
-        <div class="send-up-down">
+        <div slot=description>
+            To Check
+        </div>
+        <div slot="optional-controls" class="send-up-down">
             <button class="send up" on:click={sendUp}>send up</button>
             <button class="send" on:click={reset}>reset</button>
             <button class="send down" on:click={sendDown}>send down</button>
         </div>
-        {#await promisedBatch}
-            <div class=loading-spinner>
-                <Pulse/>
-            </div>
-        {/await}
     </DragNDropList>
-    <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}/>
+    <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}>
+        <div slot=description>
+            (Partially) Not Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+        </div>
+    </DragNDropList>
+    {#await promisedBatch}
+        <div class=loading-spinner>
+            <Pulse/>
+        </div>
+    {/await}
 </div>
 <div class=controls>
     <button class=submit class:enabled={toCheck.length===0} on:click={onClickSubmit}>next</button>
@@ -101,6 +114,7 @@
     }
 
     .drag-n-drop-lists-container {
+        position: relative;
         display: grid;
         grid-template-rows: auto auto auto;
     }
@@ -108,6 +122,16 @@
     .controls {
         display: flex;
         justify-content: flex-end;
+    }
+
+    .info {
+        cursor: pointer;
+        filter: opacity(50%);
+    }
+
+    .info:hover {
+        cursor: pointer;
+        filter: opacity(100%);
     }
 
     .submit {

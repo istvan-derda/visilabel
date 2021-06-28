@@ -7,7 +7,6 @@
 
     const {open} = getContext('simple-modal');
 
-    export let description = ""
     export let color = "#fff"
     export let configurations = []
 
@@ -38,8 +37,10 @@
 
 <div class="drag-n-drop-list-container"
      style="background:{color}">
-    <div class=description>{description}</div>
-    <slot class="optional-controls"/>
+    <div class="description">
+        <slot name="description"/>
+    </div>
+    <slot name=optional-controls class="optional-controls"/>
     <section class="drag-n-drop-list"
              style="min-height:{listMinHeight}px"
              use:dndzone={{items: configurations}}
