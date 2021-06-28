@@ -26,7 +26,7 @@ Please read this introduction carefully, before starting to use this tool.
 <ul>
     <li>Drag&Drop the designs into the classes <i>"Visible"</i> and <i>"(Partially) Not Visible"</i></li>
     <li>You can click a design to open it in a bigger view.</li>
-    <li>Use the buttons on the left to rate designs in bulk.</li>
+    <li>Use the buttons on the right to rate designs in bulk.</li>
     <li>Click <i>"NEXT"</i> when you rated all designs.</li>
 </ul>
 <h2>When am I done?</h2>

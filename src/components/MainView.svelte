@@ -32,8 +32,8 @@
         let labeledCombinations = convertToLabeledCombinations(userId, {visibleItems: visible, notVisibleItems: notVisible})
         saveLabeledCombinations(labeledCombinations)
         visible = []
-        toCheck = getNextToCheck()
         notVisible = []
+        toCheck = getNextToCheck()
     }
 
     function sendUp() {
@@ -59,13 +59,16 @@
     }
 
     function getNextToCheck() {
+        if (!hasNextToCheck()) {
+            return []
+        }
         let nextToCheck = all_batches[i]
         i++;
         return nextToCheck.background_colors.map(color => ({id: uuid(), designId: nextToCheck.design_id, background: color}))
     }
 
     function hasNextToCheck() {
-        return all_batches.length > i + 1
+        return all_batches.length > i
     }
 
     let batchPromise
@@ -184,7 +187,7 @@
 
     .send-up-down {
         position: absolute;
-        left: 16px;
+        right: 16px;
         top: 50%;
         transform: translateY(-50%);
 
