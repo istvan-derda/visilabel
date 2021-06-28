@@ -29,3 +29,8 @@ Please read this introduction carefully, before starting to use this tool.
     <li>Use the buttons on the left to rate designs in bulk.</li>
     <li>Click <i>"NEXT"</i> when you rated all designs.</li>
 </ul>
+<h2>When am I done?</h2>
+<p>
+    Technically there is a finite list of designs to rate and it is possible to rate them all. But it is by no means required. You can stop
+    anytime and come back later. Your ratings are saved every time you click on "NEXT". Of course more ratings are better :)
+</p>

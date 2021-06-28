@@ -1,11 +1,7 @@
-import uuid from "uuid-random";
-
-let all_batches
-let i = 0;
 
 export async function fetchAllBatches() {
-    let batches_dto = await fetch("https://visilable-backend.herokuapp.com/toRate").then(response => response.json())
-    all_batches = batches_dto.batches
+    return fetch("https://visilable-backend.herokuapp.com/toRate").then(response => response.json())
+            .then(batchesDto=>batchesDto.batches)
 }
 
 export function saveLabeledCombinations(labeledCombinations) {
@@ -29,14 +25,4 @@ function saveLabeledCombination({userId, designId, backgroundColor, visibilitySc
             ]
         })
     })
-}
-
-export function hasNextToCheck() {
-    return all_batches.length > i + 1
-}
-
-export function getNextToCheck() {
-    let nextToCheck = all_batches[i]
-    i++;
-    return nextToCheck.background_colors.map(color => ({id: uuid(), designId: nextToCheck.design_id, background: color}))
 }

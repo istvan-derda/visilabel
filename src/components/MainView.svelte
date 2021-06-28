@@ -5,10 +5,11 @@
     import NotVisibleDefinition from './NotVisibleDefinition.svelte'
     import VisibleDefinition from './VisibleDefinition.svelte'
     import {userIdFromCookie} from "../services/userIdService";
-    import {fetchAllBatches, getNextToCheck, hasNextToCheck, saveLabeledCombinations} from "../services/backendService";
+    import {fetchAllBatches, saveLabeledCombinations} from "../services/backendService";
     import {convertToLabeledCombinations} from '../services/checkMapper'
     import {getContext, onMount} from "svelte";
     import {Pulse} from 'svelte-loading-spinners'
+    import uuid from "uuid-random";
 
     const {open} = getContext('simple-modal');
 
@@ -17,6 +18,9 @@
     let visible = []
     let toCheck = []
     let notVisible = []
+
+    let all_batches = []
+    let i = 0;
 
     function onClickSubmit() {
         if (toCheck.length > 0) {
@@ -54,13 +58,23 @@
         toCheck = []
     }
 
-    let promisedBatch
+    function getNextToCheck() {
+        let nextToCheck = all_batches[i]
+        i++;
+        return nextToCheck.background_colors.map(color => ({id: uuid(), designId: nextToCheck.design_id, background: color}))
+    }
+
+    function hasNextToCheck() {
+        return all_batches.length > i + 1
+    }
+
+    let batchPromise
     onMount(() => {
         open(InfoModal, {})
-        promisedBatch = fetchAllBatches()
+        batchPromise = fetchAllBatches()
+                .then(batches => all_batches = batches)
                 .then(() => toCheck = getNextToCheck())
     })
-
 </script>
 
 <div class=header>
@@ -88,7 +102,7 @@
             <button class="send" on:click={reset}>reset</button>
             <button class="send down" on:click={sendDown}>send down</button>
         </div>
-        {#await promisedBatch}
+        {#await batchPromise}
             <div class=loading-spinner>
                 <Pulse/>
             </div>
