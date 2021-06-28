@@ -40,7 +40,6 @@
     <div class="description">
         <slot name="description"/>
     </div>
-    <slot name=optional-controls class="optional-controls"/>
     <section class="drag-n-drop-list"
              style="min-height:{listMinHeight}px"
              use:dndzone={{items: configurations}}

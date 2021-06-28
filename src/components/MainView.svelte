@@ -65,7 +65,7 @@
 
 <div class=header>
 	<span class=title>
-		Visi<b>lable</b><img alt="info"  on:click={()=>open(InfoModal)} class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+		Visi<b>lable</b><img alt="info" on:click={()=>open(InfoModal)} class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
 	</span>
     <span>your id is: {userId}</span>
 </div>
@@ -73,29 +73,33 @@
 <div class=drag-n-drop-lists-container>
     <DragNDropList bind:configurations={visible} color={"#dcf5de"}>
         <div slot=description>
-            Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px"  class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+            Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px" class=info
+                         src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
-    <DragNDropList bind:configurations={toCheck} color={"#ccc"}>
-        <div slot=description>
-            To Check
-        </div>
-        <div slot="optional-controls" class="send-up-down">
+    <div style="position:relative">
+        <DragNDropList bind:configurations={toCheck} color={"#ccc"}>
+            <div slot=description>
+                To Check
+            </div>
+        </DragNDropList>
+        <div class="send-up-down">
             <button class="send up" on:click={sendUp}>send up</button>
             <button class="send" on:click={reset}>reset</button>
             <button class="send down" on:click={sendDown}>send down</button>
         </div>
-    </DragNDropList>
+        {#await promisedBatch}
+            <div class=loading-spinner>
+                <Pulse/>
+            </div>
+        {/await}
+    </div>
     <DragNDropList bind:configurations={notVisible} color={"#f2ac9d"}>
         <div slot=description>
-            (Partially) Not Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+            (Partially) Not Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info
+                                         src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
-    {#await promisedBatch}
-        <div class=loading-spinner>
-            <Pulse/>
-        </div>
-    {/await}
 </div>
 <div class=controls>
     <button class=submit class:enabled={toCheck.length===0} on:click={onClickSubmit}>next</button>
@@ -166,24 +170,25 @@
 
     .send-up-down {
         position: absolute;
+        left: 16px;
         top: 50%;
         transform: translateY(-50%);
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 150px;
+        height: 110px;
     }
 
     .send {
         margin: 0;
     }
 
-    .up {
+    .send.up {
         background: #dcf5de;
     }
 
-    .down {
+    .send.down {
         background: #f2ac9d;
     }
 
