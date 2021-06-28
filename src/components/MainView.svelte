@@ -5,6 +5,7 @@
     import {fetchAllBatches, getNextToCheck, saveChecks} from "../services/backendService";
     import {convertToChecks} from '../services/checkMapper'
     import {getContext, onMount} from "svelte";
+    import {Pulse} from 'svelte-loading-spinners'
 
     const {open} = getContext('simple-modal');
 
@@ -47,9 +48,10 @@
         to_check = []
     }
 
+    let promisedBatch
     onMount(() => {
         open(InfoModal, {})
-        fetchAllBatches()
+        promisedBatch = fetchAllBatches()
                 .then(() => to_check = getNextToCheck())
     })
 
@@ -70,6 +72,11 @@
             <button class="send" on:click={reset}>reset</button>
             <button class="send down" on:click={sendDown}>send down</button>
         </div>
+        {#await promisedBatch}
+            <div class=loading-spinner>
+                <Pulse/>
+            </div>
+        {/await}
     </DragNDropList>
     <DragNDropList description="(Partially) Not Visible" bind:configurations={notVisible} color={"#f2ac9d"}/>
 </div>
@@ -150,5 +157,12 @@
 
     .down {
         background: #f2ac9d;
+    }
+
+    .loading-spinner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 </style>
