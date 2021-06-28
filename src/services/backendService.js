@@ -32,7 +32,7 @@ function saveLabeledCombination({userId, designId, backgroundColor, visibilitySc
 }
 
 export function hasNextToCheck() {
-    return false //all_batches.length() > i + 1
+    return all_batches.length > i + 1
 }
 
 export function getNextToCheck() {
