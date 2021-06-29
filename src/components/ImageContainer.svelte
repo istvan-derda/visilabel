@@ -4,7 +4,7 @@
     export let configuration;
     export let imageSizePx
 
-    let src = designImageUrl(configuration.designId, imageSizePx)
+    $: src = designImageUrl(configuration.designId, imageSizePx)
     let error = false
 
     function handleImageError() {
@@ -12,15 +12,17 @@
     }
 </script>
 
-<div class=image-container style="height:{imageSizePx}px;width:{imageSizePx}px;background:#{configuration.background};">
+<div class=image-container style="background:#{configuration.background};">
     <!--suppress HtmlUnknownTarget -->
-    {#if !error}
-        <img alt="design"
-             src={src}
-             on:error={()=>error=true}>
-    {:else}
-        An Error occurred when loading the image. Please reload the page or try again later.
-    {/if}
+    <div style="height:{imageSizePx}px;width:{imageSizePx}px;">
+        {#if !error}
+            <img alt="design"
+                 src={src}
+                 on:error={()=>error=true}>
+        {:else}
+            An Error occurred when loading the image. Please reload the page or try again later.
+        {/if}
+    </div>
 </div>
 
 <style>
