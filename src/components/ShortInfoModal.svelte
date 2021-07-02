@@ -4,9 +4,12 @@
 </script>
 
 <h1>Welcome to Visi<b>lable</b>!</h1>
-Thank you for helping me out!
-<br/><br/>
-Please read this introduction carefully, before starting to use this tool.
+<p>
+    Thank you for helping me out!
+</p>
+<p>
+    Please read this introduction carefully, before starting to use this tool.
+</p>
 <h2>How to use this Tool:</h2>
 <ul>
     <li>Drag&Drop the designs into the classes <i>"Visible"</i> and <i>"(Partially) Not Visible"</i></li>
@@ -22,3 +25,8 @@ Please read this introduction carefully, before starting to use this tool.
     <VisibleDefinition/>
     <NotVisibleDefinition/>
 </section>
+
+Example:
+<div>
+    <img width="100%" src="./example.png" alt="example"/>
+</div>
