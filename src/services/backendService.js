@@ -1,6 +1,7 @@
+const backendUrl = "https://visilable-backend.isde.dev"
 
 export async function fetchAllBatches() {
-    return fetch("https://visilable-backend.herokuapp.com/toRate").then(response => response.json())
+    return fetch(`${backendUrl}/toRate`).then(response => response.json())
             .then(batchesDto=>batchesDto.batches)
 }
 
@@ -11,7 +12,7 @@ export function saveLabeledCombinations(labeledCombinations) {
 }
 
 function saveLabeledCombination({userId, designId, backgroundColor, visibilityScore}) {
-    fetch("https://visilable-backend.herokuapp.com/submitRating", {
+    fetch(`${backendUrl}/submitRating`, {
         method: "POST",
         mode: 'cors',
         headers: {
