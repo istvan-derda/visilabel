@@ -1,6 +1,7 @@
 <script>
     import DragNDropList from './DragNDropList.svelte';
     import InfoModal from './InfoModal.svelte'
+    import ShortInfoModal from './ShortInfoModal.svelte'
     import EndModal from './EndModal.svelte'
     import NotVisibleDefinition from './NotVisibleDefinition.svelte'
     import VisibleDefinition from './VisibleDefinition.svelte'
@@ -73,7 +74,7 @@
 
     let batchPromise
     onMount(() => {
-        open(InfoModal, {})
+        open(ShortInfoModal, {})
         batchPromise = fetchAllBatches()
                 .then(batches => all_batches = batches)
                 .then(() => toCheck = getNextToCheck())
