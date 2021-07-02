@@ -14,6 +14,4 @@ RUN npm run-script build
 
 EXPOSE 5000
 
-ENV PORT=5000
-
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
