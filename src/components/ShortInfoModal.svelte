@@ -3,7 +3,7 @@
     import NotVisibleDefinition from "./NotVisibleDefinition.svelte";
 </script>
 
-<h1>Welcome to Visi<b>lable</b>!</h1>
+<h1>Welcome to Visi<b>label</b>!</h1>
 <p>
     Thank you for helping me out!
 </p>

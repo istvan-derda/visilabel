@@ -83,7 +83,7 @@
 
 <div class=header>
 	<span class=title>
-		Visi<b>lable</b><img alt="info" on:click={()=>open(InfoModal)} class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+		Visi<b>label</b><img alt="info" on:click={()=>open(InfoModal)} class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
 	</span>
     <span>your id is: {userId}</span>
 </div>
