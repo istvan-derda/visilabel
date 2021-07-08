@@ -1,10 +1,10 @@
 <script>
     import DragNDropList from './DragNDropList.svelte';
-    import InfoModal from './InfoModal.svelte'
-    import ShortInfoModal from './ShortInfoModal.svelte'
+    import InfoModal from './infoText/InfoModal.svelte'
+    import ShortInfoModal from './infoText/ShortInfoModal.svelte'
     import EndModal from './EndModal.svelte'
-    import NotVisibleDefinition from './NotVisibleDefinition.svelte'
-    import VisibleDefinition from './VisibleDefinition.svelte'
+    import NotVisibleDefinition from './infoText/NotVisibleDefinition.svelte'
+    import VisibleDefinition from './infoText/VisibleDefinition.svelte'
     import {userIdFromCookie} from "../services/userIdService";
     import {fetchAllBatches, saveLabeledCombinations} from "../services/backendService";
     import {convertToLabeledCombinations} from '../services/checkMapper'
