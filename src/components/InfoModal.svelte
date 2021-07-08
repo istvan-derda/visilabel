@@ -12,9 +12,9 @@ Please read this introduction carefully, before starting to use this tool.
     I'm currently working on my bachelors-thesis in computer-science with the title "Rating the visibility of digital images with transparencies on plain backgrounds".
     <br/>
     <i>Visi<b>label</b></i> is a tool I built to gather data on what humans perceive as "visible". <br/>
-    The data will be used to evaluate my success in implementing an algorithm classifying designs as "Visible" or "(Partially) Not Visible".
+    The data will be used to evaluate my success in implementing an algorithm classifying designs as "Perfectly Visible" or "(Partially) Poorly Visible".
 </p>
-<h2>What do I mean by "(Partially) Not Visible" and "Visible"</h2>
+<h2>What do I mean by "(Partially) Poorly Visible" and "Perfectly Visible"</h2>
 <p>
     The question is <b>not</b> about aesthetics or visual appeal.
 </p>
@@ -24,7 +24,7 @@ Please read this introduction carefully, before starting to use this tool.
 </section>
 <h2>How to use this Tool:</h2>
 <ul>
-    <li>Drag&Drop the designs into the classes <i>"Visible"</i> and <i>"(Partially) Not Visible"</i></li>
+    <li>Drag&Drop the designs into the classes <i>"Perfectly Visible"</i> and <i>"(Partially) Poorly Visible"</i></li>
     <li>You can click a design to open it in a bigger view.</li>
     <li>Use the buttons on the right to rate designs in bulk.</li>
     <li>Click <i>"NEXT"</i> when you rated all designs.</li>

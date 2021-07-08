@@ -1,4 +1,4 @@
-<b>(Partially) Not Visible</b>:
+<b>(Partially) Poorly Visible</b>:
 <ul>
-    <li>Does not meet the criteria of <b>"Visible"</b></li>
+    <li>Does not meet the criteria of Visible</li>
 </ul>

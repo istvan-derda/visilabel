@@ -91,7 +91,7 @@
 <div class=drag-n-drop-lists-container>
     <DragNDropList bind:configurations={visible} color={"#dcf5de"}>
         <div slot=description>
-            Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px" class=info
+            Perfectly Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px" class=info
                          src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
@@ -114,7 +114,7 @@
     </div>
     <DragNDropList bind:configurations={notVisible} color={"#f2ac9d"}>
         <div slot=description>
-            (Partially) Not Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info
+            (Partially) Poorly Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info
                                          src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
