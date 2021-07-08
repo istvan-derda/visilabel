@@ -1,4 +1,4 @@
-const backendUrl = "https://visilable-backend.isde.dev"
+const backendUrl = "https://visilabel-backend.isde.dev"
 
 export async function fetchAllBatches() {
     return fetch(`${backendUrl}/toRate`).then(response => response.json())
