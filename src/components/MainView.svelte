@@ -106,7 +106,7 @@
             {#await userLabelCountPromise then count}
                 {count}
             {/await}
-            pages
+            combinations
         </div>
     </div>
     <span>your id is: {userId}</span>
