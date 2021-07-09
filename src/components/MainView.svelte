@@ -104,7 +104,7 @@
         </div>
         <div>you habe labeled
             {#await userLabelCountPromise then count}
-                {count/8}
+                {count}
             {/await}
             pages
         </div>
