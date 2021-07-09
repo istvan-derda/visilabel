@@ -85,8 +85,10 @@
         batchPromise = fetchAllBatches()
                 .then(batches => all_batches = batches)
                 .then(() => toCheck = getNextToCheck())
-        totalLabelCountPromise = getLabelCount()
-        userLabelCountPromise = getLabelCountUser(userId)
+                .then(() => {
+                    totalLabelCountPromise = getLabelCount()
+                    userLabelCountPromise = getLabelCountUser(userId)
+                })
     })
 </script>
 
