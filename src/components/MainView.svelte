@@ -6,7 +6,7 @@
     import NotVisibleDefinition from './infoText/NotVisibleDefinition.svelte'
     import VisibleDefinition from './infoText/VisibleDefinition.svelte'
     import {userIdFromCookie} from "../services/userIdService";
-    import {fetchAllBatches, saveLabeledCombinations} from "../services/backendService";
+    import {fetchAllBatches, getLabelCount, getLabelCountUser, saveLabeledCombinations} from "../services/backendService";
     import {convertToLabeledCombinations} from '../services/checkMapper'
     import {getContext, onMount} from "svelte";
     import {Pulse} from 'svelte-loading-spinners'
@@ -29,12 +29,17 @@
         }
         if (!hasNextToCheck()) {
             open(EndModal)
+            batchPromise = fetchAllBatches()
+                    .then(batches => all_batches = batches)
+                    .then(() => toCheck = getNextToCheck())
         }
         let labeledCombinations = convertToLabeledCombinations(userId, {visibleItems: visible, notVisibleItems: notVisible})
         saveLabeledCombinations(labeledCombinations)
         visible = []
         notVisible = []
         toCheck = getNextToCheck()
+        totalLabelCountPromise = getLabelCount()
+        userLabelCountPromise = getLabelCountUser(userId)
     }
 
     function sendUp() {
@@ -72,12 +77,16 @@
         return all_batches.length > i
     }
 
+    let totalLabelCountPromise
+    let userLabelCountPromise
     let batchPromise
     onMount(() => {
         open(ShortInfoModal, {})
         batchPromise = fetchAllBatches()
                 .then(batches => all_batches = batches)
                 .then(() => toCheck = getNextToCheck())
+        totalLabelCountPromise = getLabelCount()
+        userLabelCountPromise = getLabelCountUser(userId)
     })
 </script>
 
@@ -85,6 +94,19 @@
 	<span class=title>
 		Visi<b>label</b><img alt="info" on:click={()=>open(InfoModal)} class=info src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
 	</span>
+    <div>
+        <div>total label-count:
+            {#await totalLabelCountPromise then count}
+                {count}
+            {/await}
+        </div>
+        <div>you habe labeled
+            {#await userLabelCountPromise then count}
+                {count/8}
+            {/await}
+            pages
+        </div>
+    </div>
     <span>your id is: {userId}</span>
 </div>
 
@@ -92,7 +114,7 @@
     <DragNDropList bind:configurations={visible} color={"#dcf5de"}>
         <div slot=description>
             Perfectly Visible <img alt="info" on:click={()=>open(VisibleDefinition)} style="height:15px" class=info
-                         src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+                                   src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
     <div style="position:relative">
@@ -115,7 +137,7 @@
     <DragNDropList bind:configurations={notVisible} color={"#f2ac9d"}>
         <div slot=description>
             (Partially) Poorly Visible <img alt="info" on:click={()=>open(NotVisibleDefinition)} style="height:15px" class=info
-                                         src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
+                                            src="https://img.icons8.com/material-outlined/24/000000/info.png"/>
         </div>
     </DragNDropList>
 </div>
@@ -127,6 +149,7 @@
     .header {
         display: flex;
         justify-content: space-between;
+        place-items: center;
     }
 
     .title {
