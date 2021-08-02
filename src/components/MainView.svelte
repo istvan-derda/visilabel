@@ -102,7 +102,7 @@
                 {count}
             {/await}
         </div>
-        <div>you habe labeled
+        <div>you have labeled
             {#await userLabelCountPromise then count}
                 {count}
             {/await}

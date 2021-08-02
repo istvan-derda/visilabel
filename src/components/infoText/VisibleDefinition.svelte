@@ -1,4 +1,4 @@
-<b>Perfecly Visible</b>:
+<b>Perfectly Visible</b>:
 <ul>
     <li>Every part of the design clearly separates from the background.</li>
     <li>The design is easy to grasp quickly and completely even in a small preview.</li>
